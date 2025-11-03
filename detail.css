@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  height: 100vh;
+  body {
+  background: linear-gradient(to bottom right, #ff9900, #ffcc66);
+  background-repeat: no-repeat;      /* 반복 없음 */
+  background-size: cover;            /* 화면에 꽉 채움 */
+  background-attachment: fixed;      /* 스크롤해도 배경 고정 */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+}
+
+.content {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  border-radius: 15px;
+}

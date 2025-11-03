@@ -1,14 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <h1>첫번째 프로젝트</h1>
-    <p>나는솔로 보고 뭐가 인상깊었어?</p>
-    <h2>뭐 왜애애애뭐뭐멍 대게 먹고싶어</h2>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <title>JEIL MEDICAL's Network Map</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom right, #ff9900, #ffcc66);
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+  font-size: 48px;
+  font-family: 'Montserrat', 'Pretendard', sans-serif;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  letter-spacing: 1px;
+  margin-bottom: 70px;
+}
+
+    .flag-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 15px;
+      justify-items: center;
+    }
+
+    .flag-button {
+      border: none;
+      background: none;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .flag-button img {
+      width: 70px;
+      height: 70px;
+      border-radius: 5px;
+    }
+
+    .flag-button span {
+      display: block;
+      margin-top: 5px;
+      color: white;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>JEIL MEDICAL's Network Map</h1>
+
+  <div class="flag-grid" id="flagGrid">
+    <!-- 🟦 여기에 JavaScript로 버튼이 자동 생성됩니다 -->
+  </div>
+
+  <script src="main.js"></script>
+</body>
 </html>

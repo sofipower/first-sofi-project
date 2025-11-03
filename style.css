@@ -1,0 +1,116 @@
+body {
+  background: linear-gradient(to bottom right, #ff9900, #ffcc66);
+  background-repeat: no-repeat;      /* 반복 없음 */
+  background-size: cover;            /* 화면에 꽉 채움 */
+  background-attachment: fixed;      /* 스크롤해도 배경 고정 */
+}
+
+.flag-button img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%; /* 완전한 원형 */
+  object-fit: cover;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3); /* 부드러운 빛 번짐 */
+  transition: transform 0.3s ease;
+}
+
+.flag-button img:hover {
+  transform: scale(1.08); /* 마우스 올리면 살짝 확대 */
+}
+.blink {
+  animation: glowPulse 2s infinite ease-in-out;
+  box-shadow: 0 0 16px 6px rgba(255, 255, 255, 0.4);
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    filter: brightness(1);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    filter: brightness(1.5);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+  }
+}
+.flag-button span {
+  display: block;
+  margin-top: 8px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #ff9900, #ffcc66);
+  text-align: center;
+  padding: 40px;
+}
+
+h1 {
+  color: white;
+  font-size: 32px;
+  margin-bottom: 40px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.flag-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 30px;
+  justify-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #ff9900, #ffcc66);
+  text-align: center;
+  padding: 40px;
+}
+
+h1 {
+  color: white;
+  font-size: 32px;
+  margin-bottom: 40px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.flag-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* ✅ 반응형 그리드 */
+  gap: 30px;
+  justify-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.flag-button {
+  border: none;
+  background: rgba(255, 255, 255, 0.05); /* ✅ 카드 느낌 배경 */
+  border-radius: 12px;
+  padding: 15px;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.flag-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+}
+
+.flag-button img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.flag

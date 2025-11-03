@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ko"> 
+    <head> 
+        <meta charset="UTF-8" /> 
+        <title>국가 상세페이지</title> 
+        <style> 
+        body { 
+            background: linear-gradient(to bottom right, #ff9900, #ffcc66);
+            font-family: Arial, sans-serif; 
+            font-size: larger; 
+            padding: 60px; 
+            color: white; 
+            text-align: center; 
+            } 
+        .box { 
+            background: rgba(255, 255, 255, 0.1); 
+            padding: 50px; 
+            border-radius: 10px; 
+            width: 400px; 
+            margin: 0 auto; 
+            } 
+        h2 { 
+            margin-bottom: 10px; 
+            } 
+        .product { 
+            text-align: left; 
+            margin-top: 60px; 
+            } 
+        .product p { 
+            margin: 10px 10; 
+            } 
+            
+        </style> 
+        </head> 
+        <body> 
+            <div class="box"> 
+                <h2 id="country-name">국가명</h2> 
+                <p>전체판매율: 
+                    <span id="total-rate">0</span>%</p> 
+                    <div class="product" 
+                    id="product-list"> 
+                    <!-- 제품별 판매율이 여기에 표시됨 --> 
+                    </div> </div> <script> 
+                    // 🟦 URL에서 국가명 가져오기 
+                    const params = new URLSearchParams(window.location.search); const country = params.get("country"); 
+                    // // 🟦 국가별 데이터
+                    const data = { 
+                        "Japan": { name: "일본", total: 11.27, 
+                        products: { 
+                            "CMF": 4.39, 
+                            "CS": 1.17, 
+                            "Dental": 5.27, 
+                            "OEM": 0.15, 
+                            "SMARTO": 0.07, 
+                            "VET": 0.23 } }, 
+                            
+                            // 다른 국가도 여기에 추가 가능 
+                        "US": { name: "미국", total: 21.86,
+                        products: { 
+                            "CMF": 3.86, 
+                            "CS" : 1.20,
+                            "Dental": 1.46,
+                            "OEM" : 4.26,
+                            "OS" : 6.72,
+                            "SMARTO" : 3.95,
+                            "Spine" : 0.34,
+                            "VET" : 0.07 } }, 
+                        
+                        "Colombia": { name: "콜롬비아", total: 9.90,
+                        products: {
+                            "CMF" : 3.14,
+                            "Dental" : 0.14,
+                            "OS" : 6.40,
+                            "VET" : 0.23 } },
+
+                        "Thailand" : {name: "태국", total: 9.26,
+                            products:{
+                                "CMF" : 6.26,
+                                "Dental" : 0.24,
+                                "OS" : 1.71,
+                                "VET" : 1.05  }  },
+
+                        "Spain" : {name : "스페인", total: 5.32,
+                            products:{
+                                "CMF": 1.78,
+                                "Dental" : 1.19,
+                                "VET" : 2.35
+                            }  },
+                        
+                        "Russia" : {name : "러시아", total: 5.30,
+                            products:{
+                                "CMF" : 4.94,
+                                "Dental" : 0.27,
+                                "OS" : 0.09
+                            }  },
+
+                        "Vietnam" : {name : "베트남", total: 4.40,
+                            products:{
+                                "CMF" : 3.28,
+                                "Dental" : 1.12,
+                                "OS" : 0.00
+                            } },
+
+                        "Brazil" : {name : "브라질", total: 4.22,
+                            products:{
+                                "CMF" : 1.32,
+                                "CS" : 0.53,
+                                "OS" : 2.36,
+                                "SMARTO" : 0.02
+                            } },
+
+                        "Indonesia" : {name : "인도네시아", total: 4.03,
+                            products:{
+                                "CMF" : 2.78,
+                                "Dental" : 0.35,
+                                "OS" : 0.90
+                            } },
+                        
+                        "SaudiArabia" : {name : "사우디아라비아", total: 3.31,
+                            products:{
+                                "CMF" : 3.08,
+                                "Dental" : 0.22,
+                                "OS" : 0.00
+                            }  },
+                        "Malaysia" : {name : "말레이시아", total: 2.28,
+                            products:{
+                                "CMF" : 1.24,
+                                "Dental" : 0.10,
+                                "OS" : 0.94,
+                                "VET" : 0.00
+                            } },
+                        "Taiwan" : {name : "대만", total: 0.99,
+                            products:{
+                                "CS" : 0.05,
+                                "Dental" : 0.20,
+                                "OS" : 0.34,
+                                "SMARTO" : 0.01,
+                                "VET" : 0.38
+                            }  },
+                        
+                        "Philippines" : {name : "필리핀", total: 0.82,
+                            products:{
+                                "CMF" : 0.29,
+                                "Dental" : 0.26,
+                                "OS" : 0.00,
+                                "VET" : 0.27
+                            } },
+                        
+                        "Kazakhstan" : {name : "카자흐스탄", total: 0.66,
+                            products:{
+                                "CMF" : 0.66
+                            } },
+                        
+                        "Pakistan": {name : "파키스탄", total: 0.27,
+                            products:{
+                                "CMF" : 0.27
+                            } },
+
+                         "Mongolia" : {name : "몽골", total: 0.2,
+                            products:{
+                                "CMF" : 0.25
+                            } },
+
+                         "Myanmar" : {name : "미얀마", total: 0.13,
+                            products:{
+                                "CMF" : 0.10,
+                                "Dental" : 0.01,
+                                "OS" : 0.02
+                            } },
+                         
+                         "Nepal" : {name : "네팔", total: 0.11,
+                            products:{
+                                "CMF" : 0.10,
+                                "CS" : 0.01
+                            } },
+                         
+                         "HongKong" : {name : "홍콩", total: 0.11,
+                            products:{
+                                "CMF" : 0.03,
+                                "Dental" : 0.00,
+                                "OS" : 0.08
+                            } },
+
+                         "India" : {name : "인도", total: 0.01,
+                            products:{
+                                "CMF" : 0.00,
+                                "Dental" : 0.01
+                            } },
+                         
+                         "China": {name : "중국", total: 0.00,
+                            products:{
+                                "VET" : 0.00
+                            } },
+                         
+                         "Singapore": {name : "싱가포르", total: 0.01,
+                            products:{
+                                "VET" : 0.01,
+                                "Dental" : 0.00
+                            } },
+                         
+                         "Lebanon": {name : "레바논", total: 0.46,
+                            products:{
+                                "CMF" : 0.46
+                            } },
+
+                         "UAE": {name : "아랍에미리트", total: 0.42,
+                            products:{
+                                "CMF" : 0.04,
+                                "Dental" : 0.38
+                            } },
+
+                         "Palestine": {name : "팔레스타인", total: 0.23,
+                            products:{
+                                "CMF" : 0.12,
+                                "CS" : 0.11
+                            } },
+
+                         "Bahrain": {name : "바레인", total: 0.23,
+                            products:{
+                                "CMF" : 0.23
+                            } },
+
+                         "Turkey": {name : "터키", total: 0.19,
+                            products:{
+                                "CMF" : 0.00,
+                                "Dental" : 0.19
+                            } },
+
+                         "Iraq": {name : "이라크", total: 0.08,
+                            products:{
+                                "CMF" : 0.08,
+                                "Dental" : 0.00
+                            } },
+
+                         "Jordan": {name : "요르단", total: 0.04,
+                            products:{
+                                "CMF" : 0.03,
+                                "Dental" : 0.02
+                            } },
+
+                         "Kuwait": {name : "쿠웨이트", total: 0.03,
+                            products:{
+                                "CMF" : 0.01,
+                                "Dental" : 0.01
+                            } },
+
+                         "Israel": {name : "이스라엘", total: 0.01,
+                            products:{
+                                "Dental" : 0.01
+                            } },
+
+                         "Oman": {name : "오만", total: 0.01,
+                            products:{
+                                "CMF" : 0.01
+                            } },
+
+                         "PuertoRico": {name : "푸에르토리코", total: 0.55,
+                            products:{
+                                "OS" : 0.55
+                            } },
+
+                         "Canada": {name : "캐나다", total: 0.09,
+                            products:{
+                                "Dental" : 0.09
+                            } },
+
+                         "Mexico": {name : "멕시코", total: 2.19,
+                            products:{
+                                "CMF" : 1.25,
+                                "Dental" : 0.02,
+                                "OS" : 0.80,
+                                "VET" : 0.12
+                            } },
+
+                         "Chile": {name : "칠레", total: 0.72,
+                            products:{
+                                "CMF" : 0.13,
+                                "Dental" : 0.37,
+                                "OS" : 0.22
+                            } },
+
+                         "Peru": {name : "페루", total: 0.53,
+                            products:{
+                                "CMF" : 0.48,
+                                "Dental" : 0.01,
+                                "VET" : 0.04
+                            } },
+
+                         "Ecuador": {name : "에콰도르", total: 0.52,
+                            products:{
+                                "Dental" : 0.02,
+                                "OS" : 0.50
+                            } },
+
+                         "Argentina": {name : "아르헨티나", total: 0.51,
+                            products:{
+                                "CMF" : 0.51
+                            } },
+
+                         "Paraguay": {name : "파라과이", total: 0.33,
+                            products:{
+                                "CMF" : 0.26,
+                                "Dental" : 0.01,
+                                "OS" : 0.05
+                            } },
+
+                         "Dominica": {name : "도미니카", total: 0.18,
+                            products:{
+                                "CMF" : 0.13,
+                                "Dental" : 0.05
+                            } },
+
+                         "Nicaragua": {name : "니카라과", total: 0.15,
+                            products:{
+                                "CMF" : 0.09,
+                                "Spine" : 0.06
+                            } },
+
+                         "Uruguay": {name : "우루과이", total: 0.05,
+                            products:{
+                                "CMF" : 0.04,
+                                "Dental" : 0.01
+                            } },
+
+                         "Bolivia": {name : "볼리비아", total: 0.04,
+                            products:{
+                                "CMF" : 0.04
+                            } },
+
+                         "CostaRica": {name : "코스타리카", total: 0.03,
+                            products:{
+                                "CMF" : 0.03
+                            } },
+
+                         "El Salvador": {name : "엘살바도르", total: 0.03,
+                            products:{
+                                "CMF" : 0.03
+                            } },
+
+                         "Venezuela": {name : "베네수엘라", total: 0.02,
+                            products:{
+                                "CMF" : 0.02
+                            } },
+
+                         "France": {name : "프랑스", total: 1.16,
+                            products:{
+                                "CMF" : 0.31,
+                                "Dental" : 0.85,
+                                "VET" : 0.00
+                            } },
+
+                         "Czech": {name : "체코", total: 0.96,
+                            products:{
+                                "CMF" : 0.76,
+                                "Dental" : 0.20
+                            } },
+
+                         "Romania": {name : "루마니아", total: 0.70,
+                            products:{
+                                "CMF" : 0.10,
+                                "Dental" : 0.60
+                            } },
+
+                         "Austria": {name : "오스트리아", total: 0.58,
+                            products:{
+                                "Dental" : 0.58
+                            } },
+
+                         "Portugal": {name : "포르투갈", total: 0.27,
+                            products:{
+                                "CMF" : 0.27
+                            } },
+
+                         "Hungary": {name : "헝가리", total: 0.26,
+                            products:{
+                                "CMF" : 0.13,
+                                "Dental" : 0.14
+                            } },
+
+                         "Ukraine": {name : "우크라이나", total: 0.23,
+                            products:{
+                                "Dental" : 0.23
+                            } },
+
+                         "Greece": {name : "그리스", total: 0.16,
+                            products:{
+                                "CMF" : 0.16,
+                                "Dental" : 0.00
+                            } },
+
+                         "Moldova": {name : "몰도바", total: 0.10,
+                            products:{
+                                "CMF" : 0.08,
+                                "Dental" : 0.02
+                            } },
+
+                         "Poland": {name : "폴란드", total: 0.10,
+                            products:{
+                                "CMF" : 0.09,
+                                "Dental" : 0.01
+                            } },
+
+                         "UK": {name : "영국", total: 0.09,
+                            products:{
+                                "CMF" : 0.00,
+                                "Dental" : 0.08
+                            } },
+
+                         "Netherlands": {name : "네덜란드", total: 0.08,
+                            products:{
+                                "CMF" : 0.00,
+                                "Dental" : 0.07
+                            } },
+
+                         "Italy": {name : "이탈리아", total: 0.02,
+                            products:{
+                                "CMF" : 0.02
+                            } },
+
+                         "Belgium": {name : "벨기에", total: 0.02,
+                            products:{
+                                "Dental" : 0.02
+                            } },
+
+                         "Cyprus": {name : "키프로스", total: 0.01,
+                            products:{
+                                "CMF" : 0.01,
+                                "Dental" : 0.00
+                            } },
+
+                         "Georgia": {name : "조지아", total: 0.01,
+                            products:{
+                                "CMF" : 0.01,
+                                "Dental" : 0.00
+                            } },
+
+                         "Switzerland": {name : "스위스", total: 0.00,
+                            products:{
+                                "CMF" : 0.00
+                            } },
+
+                         "Slovakia": {name : "슬로바키아", total: 0.00,
+                            products:{
+                                "Dental" : 0.00
+                            } },
+
+                         "Bosnia": {name : "보스니아", total: 0.00,
+                            products:{
+                                "CMF" : 0.00
+                            } },
+
+                         "Australia": {name : "호주", total: 0.41,
+                            products:{
+                                "CMF" : 0.34,
+                                "Dental" : 0.03,
+                                "VET" : 0.04
+                            } },
+
+                         "SouthAfrica": {name : "남아프리카공화국", total: 1.64,
+                            products:{
+                                "CMF" : 1.02,
+                                "OS" : 0.62,
+                                "VET" : 0.00
+                            } },
+
+                         "Morocco": {name : "모로코", total: 0.46,
+                            products:{
+                                "Dental" : 0.46
+                            } },
+
+                         "Nigeria": {name : "나이지리아", total: 21,
+                            products:{
+                                "CMF" : 0.21
+                            } },
+
+                         "Tunisia": {name : "튀니지", total: 0.21,
+                            products:{
+                                "CMF" : 0.14,
+                                "Dental" : 0.07
+                            } },
+
+                         "Algeria": {name : "알제리", total: 0.07,
+                            products:{
+                                "CMF" : 0.07
+                            } },
+
+                         "Libya": {name : "리비아", total: 0.07,
+                            products:{
+                                "CMF" : 0.07
+                            } },
+
+                         "Kenya": {name : "케냐", total: 0.03,
+                            products:{
+                                "Dental" : 0.03
+                            } },
+
+                         "Egypt": {name : "이집트", total: 0.01,
+                            products:{
+                                "CMF" : 0.01,
+                                "Dental" : 0.00
+                            } }
+
+                        
+                            }; 
+
+                            // 🟦 화면에 표시 const info = data[country];
+                             
+                        
+                             const info = data[country];
+    if (info) {
+      document.getElementById("country-name").textContent = info.name;
+      document.getElementById("total-rate").textContent = info.total;
+
+      const list = document.getElementById("product-list");
+      for (const [product, rate] of Object.entries(info.products)) {
+        const p = document.createElement("p");
+        p.textContent = `${product}: ${rate}%`;
+        list.appendChild(p);
+      }
+    } else {
+      document.getElementById("country-name").textContent = country;
+      document.getElementById("product-list").innerHTML = "<p>데이터가 없습니다.</p>";
+    }
+  </script>
+</body>
+</html>
