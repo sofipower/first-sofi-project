@@ -6,7 +6,7 @@ const countries = [
   "India", "China", "Singapore", "Lebanon", "UAE", "Palestine", "Bahrain",
   "Turkey", "Iraq", "Jordan", "Kuwait", "Israel", "Oman", "PuertoRico",
   "Canada", "Mexico", "Chile", "Peru", "Ecuador", "Argentina",
-  "Paraguay", "Dominica", "Nicaragua", "Uruguay",
+  "Paraguay", "Dominican Republic", "Nicaragua", "Uruguay",
   "Bolivia","CostaRica","El Salvador","Venezuela","France","Czech",
   "Romania","Austria","Portugal","Hungary","Ukraine","Greece","Moldova",
   "Poland", "UK","Netherlands","Italy","Belgium","Cyprus","Georgia",
